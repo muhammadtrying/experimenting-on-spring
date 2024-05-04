@@ -1,14 +1,12 @@
 package uz.muhammadtrying;
 
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import uz.muhammadtrying.beans.Product;
-import uz.muhammadtrying.config.MyConfig;
 
 public class Main {
     public static void main(String[] args) {
-        var context = new AnnotationConfigApplicationContext(MyConfig.class);
-        Product bean = context.getBean(Product.class);
+        var container = new ClassPathXmlApplicationContext("classpath:ioc-settings.xml");
+        Product bean = container.getBean(Product.class);
         bean.save();
-        context.close();
     }
 }
